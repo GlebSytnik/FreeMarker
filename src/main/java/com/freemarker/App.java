@@ -1,6 +1,6 @@
 package com.freemarker;
 
-import com.freemarker.generate.JavaDataClassGenerator;
+import com.freemarker.generate.JavaDataModelGenerator;
 import com.freemarker.model.MetaDataField;
 import com.freemarker.model.MetaDataInfo;
 
@@ -24,16 +24,16 @@ public class App {
         metaDataFieldList1.add(metaDataField3);
 
 
-        MetaDataInfo metaDataInfo = new MetaDataInfo(new String("MetaDataInfo"),metaDataFieldList);
-        MetaDataInfo metaDataInfo1 = new MetaDataInfo(new String("MetaDataField"),metaDataFieldList1);
+        MetaDataInfo metaDataInfo = new MetaDataInfo(new String("MetaDataInfoResult"),metaDataFieldList);
+        MetaDataInfo metaDataInfo1 = new MetaDataInfo(new String("MetaDataFieldResult"),metaDataFieldList1);
         List<MetaDataInfo> metaDataInfoList = new ArrayList<>();
         metaDataInfoList.add(metaDataInfo);
         metaDataInfoList.add(metaDataInfo1);
 
-        File outputDirectory = new File("/home/gleb/IdeaProjects/FreeMarker/src/main/java/com/freemarker");
+        File outputDirectory = new File("/home/gleb/IdeaProjects/FreeMarker/src/main/java/com/freemarker/result");
 
-        JavaDataClassGenerator javaDataClassGenerator = new JavaDataClassGenerator();
-        javaDataClassGenerator.generateJavaSourceFiles(metaDataInfoList,outputDirectory);
+        JavaDataModelGenerator javaDataModelGenerator = new JavaDataModelGenerator();
+        javaDataModelGenerator.generateJavaSourceFiles(metaDataInfoList,outputDirectory);
 
     }
 }

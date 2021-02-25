@@ -13,10 +13,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class JavaDataClassGenerator {
+public class JavaDataModelGenerator {
     private Configuration configuration;
 
-    public JavaDataClassGenerator() throws IOException {
+    public JavaDataModelGenerator() throws IOException {
         configuration = new Configuration(Configuration.VERSION_2_3_28);
         configuration.setClassLoaderForTemplateLoading(getClass().getClassLoader(), "");
         configuration.setDefaultEncoding("UTF-8");
@@ -27,7 +27,7 @@ public class JavaDataClassGenerator {
 
     public void generateJavaSourceFiles(Collection<MetaDataInfo> metaDataInfos, File fileDirectory) throws Exception {
         Map<String, Object> freemarkerDataModel = new HashMap<>();
-        Template template = configuration.getTemplate("javadataclass.ftl");
+        Template template = configuration.getTemplate("javadataclassmodel.ftl");
         for (MetaDataInfo metaDataInfo : metaDataInfos) {
             freemarkerDataModel.put("metaDataInfo", metaDataInfo);
             File javaSourceFile = new File(fileDirectory, metaDataInfo.getName() + ".java");
