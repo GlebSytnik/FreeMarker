@@ -1,7 +1,6 @@
-package com.freemarker.generate;
+package com.freemarker.generatemy;
 
 import com.freemarker.model.Index;
-import com.freemarker.model.MetaDataInfo;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateExceptionHandler;
@@ -10,7 +9,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 

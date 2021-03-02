@@ -27,7 +27,7 @@ public class AppMeta {
     }
 
 
-    public static void main(String[] args) throws SchemaCrawlerException {
+    public static void main(String[] args) throws Exception {
 
 
         final LoadOptionsBuilder loadOptionsBuilder =
@@ -44,8 +44,14 @@ public class AppMeta {
 
 
 
+//        File outputDirectory = new File("/home/gleb/IdeaProjects/FreeMarker/src/main/java/com/freemarker/re");
+//        GenerateInterfaseFinal javaDataWithLiba = new GenerateInterfaseFinal();
+//        Catalog catalog = javaDataWithLiba.getCatalog();
+//
+//        javaDataWithLiba.generateInterfaseWithLiba(catalog, outputDirectory);
+
 
     }
 
-
 }
+

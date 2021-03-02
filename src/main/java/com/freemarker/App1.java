@@ -1,12 +1,10 @@
 package com.freemarker;
 
-import com.freemarker.generate.JavaDataInterfaseGenerator;
-import com.freemarker.generate.JavaDataModelGenerator;
+import com.freemarker.generatemy.JavaDataInterfaseGenerator;
 import com.freemarker.model.Index;
 import com.freemarker.model.MetaDataField;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

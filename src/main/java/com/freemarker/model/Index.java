@@ -10,6 +10,14 @@ public class Index {
         this.name = name;
         this.metaDataFieldList = metaDataFieldList;
     }
+    public Index(String name) {
+        this.name = name;
+
+    }
+    public Index(List<MetaDataField> metaDataFieldList) {
+
+        this.metaDataFieldList = metaDataFieldList;
+    }
 
 
     public String getName() {

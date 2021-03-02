@@ -1,4 +1,4 @@
-package com.freemarker;
+package com.freemarker.result;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,4 +12,8 @@ import lombok.Setter;
 public class MetaDataFieldResult {
 	private String firstName;
 	private String role;
+
+
 }
+
+

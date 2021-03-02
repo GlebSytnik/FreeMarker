@@ -1,6 +1,6 @@
-package com.freemarker.generate;
+package com.freemarker.generatemy;
 
-import com.freemarker.model.MetaDataInfoIndex;
+import com.freemarker.model.MetaDataInfoTable;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateExceptionHandler;
@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class JavaDataInterfaseGeneratorWithTable {
@@ -24,14 +25,15 @@ public class JavaDataInterfaseGeneratorWithTable {
         configuration.setLogTemplateExceptions(false);
         configuration.setWrapUncheckedExceptions(true);
     }
-    public void generateJavaInterfaseFilesWithTable(MetaDataInfoIndex metaDataInfoIndex, File fileDirectory) throws Exception {
+    public void generateJavaInterfaseFilesWithTable(List<MetaDataInfoTable> metaDataInfoTableList, File fileDirectory) throws Exception {
         Map<String, Object> freemarkerDataModel = new HashMap<>();
         Template template = configuration.getTemplate("genInterfaseWithModelMetaDataInfoIndex.ftl");
+        for (MetaDataInfoTable metaDataInfoTable : metaDataInfoTableList) {
+            freemarkerDataModel.put("metaDataInfoIndex", metaDataInfoTable);
+            File javaSourceFile = new File(fileDirectory, metaDataInfoTable.getName() + ".java");
+            Writer javaSourceFileWriter = new FileWriter(javaSourceFile);
+            template.process(freemarkerDataModel, javaSourceFileWriter);
 
-        freemarkerDataModel.put("metaDataInfoIndex", metaDataInfoIndex);
-        File javaSourceFile = new File(fileDirectory, metaDataInfoIndex.getName() + ".java");
-        Writer javaSourceFileWriter = new FileWriter(javaSourceFile);
-        template.process(freemarkerDataModel, javaSourceFileWriter);
-
+        }
     }
 }

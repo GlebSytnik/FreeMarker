@@ -1,6 +1,6 @@
-package com.freemarker.generate;
+package com.freemarker.generatemy;
 
-import com.freemarker.model.MetaDataInfo;
+import com.freemarker.model.MetaDataInfoTable;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateExceptionHandler;
@@ -13,10 +13,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class JavaDataModelGenerator {
+public class JavaDataModelGeneratorWithMetaDataInfoTable {
     private Configuration configuration;
 
-    public JavaDataModelGenerator() throws IOException {
+    public JavaDataModelGeneratorWithMetaDataInfoTable() throws IOException {
         configuration = new Configuration(Configuration.VERSION_2_3_28);
         configuration.setClassLoaderForTemplateLoading(getClass().getClassLoader(), "");
         configuration.setDefaultEncoding("UTF-8");
@@ -25,12 +25,12 @@ public class JavaDataModelGenerator {
         configuration.setWrapUncheckedExceptions(true);
     }
 
-    public void generateJavaSourceFiles(Collection<MetaDataInfo> metaDataInfos, File fileDirectory) throws Exception {
+    public void generateJavaSourceFiles(Collection<MetaDataInfoTable> dataInfoTables, File fileDirectory) throws Exception {
         Map<String, Object> freemarkerDataModel = new HashMap<>();
-        Template template = configuration.getTemplate("javadataclassmodel.ftl");
-        for (MetaDataInfo metaDataInfo : metaDataInfos) {
-            freemarkerDataModel.put("metaDataInfo", metaDataInfo);
-            File javaSourceFile = new File(fileDirectory, metaDataInfo.getName() + ".java");
+        Template template = configuration.getTemplate("generateModelWithMetaDataInfoTable.ftl");
+        for (MetaDataInfoTable metaDataInfoTable : dataInfoTables) {
+            freemarkerDataModel.put("metaDataInfoTable", metaDataInfoTable);
+            File javaSourceFile = new File(fileDirectory, metaDataInfoTable.getName() + ".java");
             Writer javaSourceFileWriter = new FileWriter(javaSourceFile);
             template.process(freemarkerDataModel, javaSourceFileWriter);
         }

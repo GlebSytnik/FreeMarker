@@ -13,6 +13,8 @@ public class ${metaDataInfo.name} {
 <#list metaDataInfo.metaDataFieldList as field>
 	private ${field.type} ${field.name};
 </#list>
+
+
 }
 
 
